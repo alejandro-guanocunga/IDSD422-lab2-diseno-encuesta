@@ -33,6 +33,7 @@ Determinar qué porcentaje de clientes actuales estaría dispuesto a inscribirse
 
 - **Equivalente en código (Python o R):** 
 Aunque aplicamos conveniencia por accesibilidad a la red de contactos, el equivalente técnico para simular una extracción reproducible sobre una base de datos de respaldo utiliza una semilla fija:
+```
 
 python
 import pandas as pd
@@ -40,6 +41,12 @@ import pandas as pd
 clientes_base = pd.DataFrame({"cliente_id": range(1, 500)})
 muestra_aleatoria = clientes_base.sample(n=20, random_state=42)
 print(muestra_aleatoria.head())
+
+```
+
+
+
+
 
 ## 4. Cuestionario 
 
