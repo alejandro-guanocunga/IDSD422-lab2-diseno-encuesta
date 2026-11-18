@@ -2,7 +2,7 @@
 
 **Equipo:** 7 · **Integrantes:** Jeriel López, Alejandro-Guanocunga  · <br>**Fecha:** 28/10/2026 <br>
 **Repositorio (fork):** github.com/alejandro-guanocunga/IDSD422-lab3-diseno-encuesta
-<br>**Enfoque del equipo (aprobado en clase):** ___
+<br>**Enfoque del equipo (aprobado en clase):** Programa de fidelización: satisfacción y beneficios valorados
 
 Completa cada sección. Usa commits por sección; la historia del repositorio se revisa.
 
@@ -14,7 +14,7 @@ Completa cada sección. Usa commits por sección; la historia del repositorio se
 Identificar qué beneficios y qué aspectos del servicio valoran más los clientes habituales de RetailAndina en Quito, para orientar el diseño de su programa de fidelización.
 
 ### Objetivo Secundario:
-Aumentar la retención de clientes frecuentes en al menos 12% durante el primer trimestre de lanzamiento. Esa meta se evaluará después con los registros de compras de la empresa, no con esta encuesta.
+Determinar qué porcentaje de clientes actuales estaría dispuesto a inscribirse en el programa de fidelización y cuantificar qué combinación de beneficios priorizan para enfocar las estrategias de retención posteriores de la empresa.
 
 ## 2. Población objetivo
 
