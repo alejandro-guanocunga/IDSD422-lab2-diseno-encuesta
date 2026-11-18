@@ -25,15 +25,21 @@ Determinar qué porcentaje de clientes actuales estaría dispuesto a inscribirse
 
 ## 3. Método de muestreo
 
-
 - **Método:** Muestreo por conveniencia declarada con referidos (contactos directos que cumplen el perfil de cliente en RetailAndina S.A.).
 
-- **Tamaño y justificación:** Se empleará una muestra total de 80 filas: 20 respuestas reales (10 por integrante) y 60 respuestas simuladas con código, dentro del rango exigido de 60 a 100 filas. Las respuestas simuladas se usan solo para tener volumen en los ejercicios; se identifican en la columna origen (real / simulado) y los datos reales se analizan por separad
+- **Tamaño y justificación:** Se empleará una muestra total de 80 filas: 20 respuestas reales (10 por integrante) y 60 respuestas simuladas con código, dentro del rango exigido de 60 a 100 filas. Las respuestas simuladas se usan solo para tener volumen en los ejercicios; se identifican en la columna origen (real / simulado) y los datos reales se analizan por separado.
 
 - **Cómo se seleccionarán los participantes:** Se seleccionará a familiares, amigos y compañeros de universidad que compran habitualmente en las sucursales de RetailAndina en Quito, enviándoles el formulario digital por WhatsApp y correo.
 
-- **Equivalente en código (Python o R):** La línea que implementa tu método sobre un CSV de clientes (aleatorio simple, estratificado o conveniencia) con el resultado de una corrida con semilla, y una frase sobre por qué tu método (y no la conveniencia) justifica el hito.
+- **Equivalente en código (Python o R):** 
+Aunque aplicamos conveniencia por accesibilidad a la red de contactos, el equivalente técnico para simular una extracción reproducible sobre una base de datos de respaldo utiliza una semilla fija:
 
+python
+import pandas as pd
+# Simulación de extracción de respaldo con semilla reproducible
+clientes_base = pd.DataFrame({"cliente_id": range(1, 500)})
+muestra_aleatoria = clientes_base.sample(n=20, random_state=42)
+print(muestra_aleatoria.head())
 
 ## 4. Cuestionario 
 
@@ -62,12 +68,24 @@ Determinar qué porcentaje de clientes actuales estaría dispuesto a inscribirse
 ## 6. Confidencialidad (RA3)
 
 - **Datos personales que se piden y por qué:**
-Se solicitan únicamente dos datos personales: el rango de edad y el género. Ambos son necesarios para realizar cruces de variables que den sentido al análisis: comparar la proporción de hombres y mujeres según el tipo de producto que compran con mayor frecuencia, y determinar si algún grupo etario prefiere un tipo de beneficio en particular (descuentos directos, puntos, 2x1 o cupones). Esta información permite segmentar los resultados y orientar el diseño del programa de fidelización de RetailAndina. No se solicitan nombre, correo, teléfono, cédula ni dirección, y la edad se recoge por rangos y no como valor exacto, para reducir la posibilidad de identificar a una persona.
+Se solicita únicamente un dato demográfico: el **rango de edad**. Este dato es necesario para realizar cruces de variables que den sentido al análisis: determinar si algún grupo etario en específico prefiere un tipo de beneficio en particular (descuentos directos, puntos, 2x1 o cupones) o se concentra en ciertos hábitos de gasto. Esta información permite segmentar los resultados y orientar el diseño del programa de fidelización de RetailAndina. No se solicitan nombres, correos, teléfonos, cédulas ni direcciones, y la edad se recopila exclusivamente por rangos para minimizar cualquier riesgo de identificación individual.
 
 - **Plan de anonimización (qué se quita o codifica antes de compartir):**
-  - El formulario no recoge datos de identificación directa (nombre, correo, teléfono, cédula). Si el envío por WhatsApp o correo deja algún rastro, no se incluye en el dataset.
-  - A cada respuesta se le asigna un ID numérico secuencial (R001, R002, …) que no guarda relación con la identidad del encuestado.
-  - Las variables categóricas (edad, género, frecuencia, producto y beneficio) se codifican con números, según la tabla del cuestionario.
-  - Las respuestas abiertas, como la de gasto, se revisan antes de compartir, para eliminar cualquier dato que permita identificar a alguien.
-  - La lista de contactos a quienes se envió el formulario se mantiene fuera del repositorio y no se comparte con el dataset.
-  - Solo se comparte el dataset anonimizado (20 respuestas reales y 60 simuladas) y se reportan resultados agregados, no respuestas individuales.
+  - El formulario no recoge datos de identificación directa (nombre, correo, teléfono, cédula). Si los canales digitales (WhatsApp o correo) dejan algún metadato de contacto, este se descarta de inmediato.
+  - A cada respuesta procesada se le asigna un ID numérico secuencial (`R001`, `R002`, …) desvinculado por completo de la identidad del encuestado.
+  - Las variables categóricas y ordinales se codifican numéricamente según la tabla del cuestionario.
+  - La lista de contactos utilizada para la difusión de la encuesta se mantiene estrictamente privada y fuera del repositorio del proyecto.
+  - Únicamente se comparte el dataset anonimizado (combinando las respuestas reales y simuladas con su respectiva columna `origen`) y se reportan exclusivamente resultados estadísticos agregados.
+
+
+## 7. Verificación con herramientas (Python / R)
+
+Tras ejecutar el script de auditoría (`verificacion_encuesta.py`) sobre el archivo de respuestas integradas (`encuesta_respuestas.csv`), se obtuvieron los siguientes resultados clave para garantizar la integridad de los datos:
+
+- **Tipos de datos (dtypes):** Todas las columnas numéricas y escalas Likert se cargaron correctamente como enteros (`int64`), mientras que los campos descriptivos operan bajo los tipos esperados, sin corromperse durante la lectura del CSV.
+- **Valores faltantes (NA):** No se detectaron valores nulos indeseados en las columnas principales, y los campos opcionales manejan adecuadamente los vacíos mediante marcas neutras.
+- **Distribuciones y sesgos interpretados:**
+  - *Sesgo de selección:* Al basarse en la red de contactos directos, se observa una concentración de respuestas en los rangos de edad más jóvenes (21–30 años), lo que subrepresenta parcialmente a los clientes mayores de RetailAndina.
+  - *Sesgo de respuesta:* Las escalas de satisfacción (P5) muestran una tendencia hacia calificaciones altas (positivas), reflejando una leve deseabilidad social típica de encuestas aplicadas a conocidos, aspecto que se mitiga analizando los datos reales de forma independiente a los simulados.
+
+
