@@ -1,4 +1,4 @@
-# Plantilla de diseño — Encuesta de satisfacción (hito 1)
+# Encuesta de satisfacción (hito 1)
 
 **Equipo:** 7 · **Integrantes:** Jeriel López, Alejandro-Guanocunga  · <br>**Fecha:** 28/10/2026 <br>
 **Repositorio (fork):** github.com/alejandro-guanocunga/IDSD422-lab2-diseno-encuesta
