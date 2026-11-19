@@ -1,7 +1,7 @@
 # Plantilla de diseño — Encuesta de satisfacción (hito 1)
 
 **Equipo:** 7 · **Integrantes:** Jeriel López, Alejandro-Guanocunga  · <br>**Fecha:** 28/10/2026 <br>
-**Repositorio (fork):** github.com/alejandro-guanocunga/IDSD422-lab3-diseno-encuesta
+**Repositorio (fork):** github.com/alejandro-guanocunga/IDSD422-lab2-diseno-encuesta
 <br>**Enfoque del equipo (aprobado en clase):** Programa de fidelización: satisfacción y beneficios valorados
 
 Completa cada sección. Usa commits por sección; la historia del repositorio se revisa.
@@ -68,9 +68,8 @@ print(muestra_aleatoria.head())
 
 | Sesgo potencial | Mitigación |
 |---|---|
-|Sesgo de selección por conveniencia: Al recolectar datos en la red cercana (amigos y familiares), se subrepresenta a clientes mayores o de otros segmentos que compran habitualmente en RetailAndina.|
+| Sesgo de selección por conveniencia: Al recolectar datos en la red cercana (amigos y familiares), se subrepresenta a clientes mayores o de otros segmentos que compran habitualmente en RetailAndina. | Declarar el canal en la metodología y diversificar el envío del formulario a distintos rangos de edad. Las filas simuladas no corrigen este sesgo: se declaran en la columna origen y los resultados reales se analizan por separado. |
 | Sesgo de respuesta: Los encuestados podrían responder lo que consideran socialmente aceptable en lugar de expresar sus preferencias reales. | Garantizar el anonimato de las respuestas y utilizar preguntas neutrales que no sugieran una respuesta deseada. |
-
 ## 6. Confidencialidad (RA3)
 
 - **Datos personales que se piden y por qué:**
