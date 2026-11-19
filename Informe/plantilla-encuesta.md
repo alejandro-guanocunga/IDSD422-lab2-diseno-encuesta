@@ -56,7 +56,7 @@ Aumentar la retención de clientes frecuentes en al menos 12% durante el primer 
 
 | Sesgo potencial | Mitigación |
 |---|---|
-|Sesgo de selección por conveniencia: Al recolectar datos en la red cercana (amigos y familiares), se subrepresenta a clientes mayores o de otros segmentos que compran habitualmente en RetailAndina. | Declarar el canal en la metodología y diversificar el envío del formulario a distintos rangos de edad. Las filas simuladas no corrigen este sesgo: se declaran en la columna origen y los resultados reales se analizan por separado.|
+|Sesgo de selección por conveniencia: Al recolectar datos en la red cercana (amigos y familiares), se subrepresentaiiiiiiiiiiiiiiiiiiiiiii a clientes mayores o de otros segmentos que compran habitualmente en RetailAndina. | Declarar el canal en la metodología y diversificar el envío del formulario a distintos rangos de edad. Las filas simuladas no corrigen este sesgo: se declaran en la columna origen y los resultados reales se analizan por separado.|
 | Sesgo de respuesta: Los encuestados podrían responder lo que consideran socialmente aceptable en lugar de expresar sus preferencias reales. | Garantizar el anonimato de las respuestas y utilizar preguntas neutrales que no sugieran una respuesta deseada. |
 
 ## 6. Confidencialidad (RA3)
