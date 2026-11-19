@@ -27,7 +27,7 @@ Determinar qué porcentaje de clientes actuales estaría dispuesto a inscribirse
 
 - **Método:** Muestreo por conveniencia declarada con referidos (contactos directos que cumplen el perfil de cliente en RetailAndina S.A.).
 
-- **Tamaño y justificación:** Se empleará una muestra total de 80 filas: 20 respuestas reales (10 por integrante) y 60 respuestas simuladas con código, dentro del rango exigido de 60 a 100 filas. Las respuestas simuladas se usan solo para tener volumen en los ejercicios; se identifican en la columna origen (real / simulado) y los datos reales se analizan por separado.
+- **Tamaño y justificación:** Se empleará una muestra total de 94 filas: 34 respuestas reales (tras excluir 1 respuesta con compra nula en el mes anterior) y 60 respuestas simuladas con código, dentro del rango exigido de 60 a 100 filas.
 
 - **Cómo se seleccionarán los participantes:** Se seleccionará a familiares, amigos y compañeros de universidad que compran habitualmente en las sucursales de RetailAndina en Quito, enviándoles el formulario digital por WhatsApp y correo.
 
@@ -39,7 +39,7 @@ python
 import pandas as pd
 # Simulación de extracción de respaldo con semilla reproducible
 clientes_base = pd.DataFrame({"cliente_id": range(1, 500)})
-muestra_aleatoria = clientes_base.sample(n=20, random_state=42)
+muestra_aleatoria = clientes_base.sample(n=34, random_state=42)
 print(muestra_aleatoria.head())
 ```
 
@@ -68,7 +68,7 @@ print(muestra_aleatoria.head())
 
 | Sesgo potencial | Mitigación |
 |---|---|
-|Sesgo de selección por conveniencia: Al recolectar datos en la red cercana (amigos y familiares), se subrepresentaiiiiiiiiiiiiiiiiiiiiiii a clientes mayores o de otros segmentos que compran habitualmente en RetailAndina. | Declarar el canal en la metodología y diversificar el envío del formulario a distintos rangos de edad. Las filas simuladas no corrigen este sesgo: se declaran en la columna origen y los resultados reales se analizan por separado.|
+|Sesgo de selección por conveniencia: Al recolectar datos en la red cercana (amigos y familiares), se subrepresenta a clientes mayores o de otros segmentos que compran habitualmente en RetailAndina.|
 | Sesgo de respuesta: Los encuestados podrían responder lo que consideran socialmente aceptable en lugar de expresar sus preferencias reales. | Garantizar el anonimato de las respuestas y utilizar preguntas neutrales que no sugieran una respuesta deseada. |
 
 ## 6. Confidencialidad (RA3)
