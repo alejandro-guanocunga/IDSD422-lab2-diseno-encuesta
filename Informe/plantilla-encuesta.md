@@ -86,12 +86,12 @@ Se solicita únicamente un dato demográfico: el **rango de edad**. Este dato es
 
 ## 7. Verificación con herramientas (Python / R)
 
-Tras ejecutar el script de auditoría (`verificacion_encuesta.py`) sobre el archivo de respuestas integradas (`encuesta_respuestas.csv`), se obtuvieron los siguientes resultados clave para garantizar la integridad de los datos:
+Tras ejecutar el script de auditoría (`verificacion_encuesta.py`) sobre el archivo integrado (`plantillas/encuesta_respuestas.csv`), que consolida **94 filas en total** (**34 respuestas reales** con `origen == 'real'` y **60 respuestas simuladas** con `origen == 'simulada'`, luego de excluir 1 respuesta del formulario que marcó `"Ninguna"` compra en el mes anterior), se obtuvieron los siguientes resultados:
 
-- **Tipos de datos (dtypes):** Todas las columnas numéricas y escalas Likert se cargaron correctamente como enteros (`int64`), mientras que los campos descriptivos operan bajo los tipos esperados, sin corromperse durante la lectura del CSV.
-- **Valores faltantes (NA):** No se detectaron valores nulos indeseados en las columnas principales, y los campos opcionales manejan adecuadamente los vacíos mediante marcas neutras.
-- **Distribuciones y sesgos interpretados:**
-  - *Sesgo de selección:* Al basarse en la red de contactos directos, se observa una concentración de respuestas en los rangos de edad más jóvenes (21–30 años), lo que subrepresenta parcialmente a los clientes mayores de RetailAndina.
-  - *Sesgo de respuesta:* Las escalas de satisfacción (P5) muestran una tendencia hacia calificaciones altas (positivas), reflejando una leve deseabilidad social típica de encuestas aplicadas a conocidos, aspecto que se mitiga analizando los datos reales de forma independiente a los simulados.
-
+- **Tipos de datos (dtypes):** Todas las variables numéricas y escalas Likert (`p1_edad`, `p2_prob_inscripcion`, `p3_frecuencia`, `p4_gasto`, variables `p5_*`, `p6_*` y `p8_*`) se cargaron como enteros (`int64`). Las columnas de identificación y texto (`respuesta_id`, `origen`, `p7_beneficio`) se cargaron como `object`, mientras que `p7_otro_texto` se interpretó como `float64` al estar completamente vacía.
+- **Valores faltantes (NA):** No se registraron valores faltantes en ninguna de las preguntas obligatorias del cuestionario. Únicamente `p7_otro_texto` presenta 94 valores nulos (`NaN`) debido a que ningún encuestado seleccionó la opción `"Otro"` en P7.
+- **Distribuciones y sesgos interpretados (analizados exclusivamente sobre las 34 filas reales):**
+  - *Sesgo de selección:* Aunque se aplicó muestreo por conveniencia en la red de contactos, la muestra real logró abarcar varios tramos adultos: 13 encuestados tienen entre 31–40 años, 7 entre 21–30, 7 entre 41–50, 5 entre 18–20 y 2 entre 51–60 años, quedando únicamente sin representación el grupo mayor de 60 años. Las 60 filas simuladas se mantienen identificadas en `origen` y no se usan para corregir este sesgo.
+  - *Sesgo de no respuesta:* En gasto mensual (`p4_gasto`), solo 2 de los 34 encuestados reales eligieron `"Prefiero no responder"`, mientras que el resto se concentró en menos de 100 USD (10 personas) y 100 a 250 USD (12 personas), mostrando baja evasión en preguntas económicas.
+  - *Sesgo de respuesta:* No se evidencia sesgo de aquiescencia o deseabilidad social positiva; por el contrario, las calificaciones de satisfacción muestran dispersión y opiniones críticas (por ejemplo, en atención del personal `p5_atencion` hubo 8 respuestas en nivel 1 y 4 en nivel 2, frente a 10 en niveles 4 y 5), y en `p7_beneficio` predomina la preferencia por descuentos directos (20) y productos 2x1 (10).
 
